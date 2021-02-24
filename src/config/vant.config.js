@@ -1,0 +1,82 @@
+import Vue from "vue";
+
+import {
+  Button,
+  Swipe,
+  SwipeItem,
+  Tabbar,
+  TabbarItem,
+  Icon,
+  Tab,
+  Tag,
+  Tabs,
+  List,
+  Row,
+  Col,
+  Cell,
+  CellGroup,
+  GoodsAction,
+  Field,
+  Checkbox,
+  Popup,
+  CheckboxGroup,
+  Picker,
+  RadioGroup,
+  Radio,
+  DatetimePicker,
+  PasswordInput,
+  NumberKeyboard,
+  Search,
+  NavBar,
+  Switch,
+  Toast,
+  PullRefresh,
+  Overlay,
+  Image,
+  Form,
+  Uploader,
+  Collapse,
+  CollapseItem,
+  Lazyload,
+  Dialog,
+  Grid,
+  GridItem,
+  Sticky
+} from "vant";
+
+Vue.use(Swipe).use(SwipeItem);
+Vue.use(Button);
+Vue.use(Picker);
+Vue.use(Popup);
+Vue.use(Tabbar).use(TabbarItem);
+Vue.use(Icon);
+Vue.use(Checkbox).use(CheckboxGroup);
+Vue.use(List);
+Vue.use(Field);
+Vue.use(Tag);
+Vue.use(Tab).use(Tabs);
+Vue.use(Row).use(Col);
+Vue.use(Cell).use(CellGroup);
+Vue.use(GoodsAction);
+Vue.use(Picker);
+Vue.use(RadioGroup);
+Vue.use(Radio);
+Vue.use(DatetimePicker);
+Vue.use(PasswordInput).use(NumberKeyboard);
+Vue.use(Search);
+Vue.use(NavBar);
+Vue.use(Switch);
+Vue.use(Toast);
+Vue.use(PullRefresh);
+Vue.use(Overlay);
+Vue.use(Collapse);
+Vue.use(CollapseItem);
+Vue.use(Uploader);
+Vue.use(Image);
+Vue.use(Uploader);
+Vue.use(Form);
+Vue.use(Lazyload);
+Vue.use(Dialog);
+Vue.use(Grid);
+Vue.use(GridItem);
+Vue.use(Sticky);
