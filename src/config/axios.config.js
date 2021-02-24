@@ -6,7 +6,7 @@ const apiUrl = 'http://localhost:3000';//线上域名
 
 axios.defaults.timeout = 10000;   // 超时时间
 axios.defaults.baseURL = apiUrl;  // 默认地址
-
+axios.defaults.withCredentials= true
 //整理数据
 // axios.defaults.transformRequest =  (data) => {
 //   //data = Qs.stringify(data);

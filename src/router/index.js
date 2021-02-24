@@ -11,6 +11,11 @@ VueRouter.prototype.push = function push(location) {
 
 const routes = [
   {
+    path: '/login/index',
+    name: 'login',
+    component: () => import(/* webpackChunkName: "home" */ '../views/login/index.vue')
+  },
+  {
     path: '/',
     redirect: '/discover/index'
   },
@@ -47,11 +52,10 @@ const router = new VueRouter({
 })
 
 // 全局前置守卫
-// router.beforeEach((to, from, next) => {
-//   // ...
-//   window.scrollTo(0, 0)
-//   next()
-// })
+router.beforeEach((to, from, next) => {
+  // ...
+  next()
+})
 
 // 全局后置钩子
 // router.afterEach((to, from) => {
