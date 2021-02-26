@@ -88,25 +88,28 @@
         <p class="more">更多<i class="iconfont icon-youjiantou"></i></p>
       </div>
       <div class="tab-content">
-        <ul v-if="active[0]">
+        <ul v-show="active[0]">
           <li v-for="item in newMusic" :key="item.id">
             <img :src="item.picUrl + '?param=50y50'" alt="" />
             <p class="name">{{ item.song.name }}</p><span>-{{item.song.artists[0].name}}</span>
           </li>
         </ul>
-        <ul v-if="active[1]">
+        <ul v-show="active[1]">
           <li v-for="item in newDisco" :key="item.id">
             <img :src="item.coverUrl + '?param=50y50'" alt="" />
             <p class="name">{{ item.albumName }}</p><span>-{{item.artistName}}</span>
           </li>
         </ul>
-        <ul v-if="active[2]">
-          <li></li>
+        <ul v-show="active[2]">
+          <li v-for="item in albumProducts" :key="item.id">
+            <img :src="item.coverUrl + '?param=50y50'" alt="" />
+            <p class="name">{{ item.albumName }}</p><span>-{{item.artistName}}</span>
+          </li>>
         </ul>
       </div>
     </div>
 
-  <div class="blank06"></div>
+    <div class="blank06"></div>
   </div>
 </template>
 
@@ -141,7 +144,8 @@ export default {
       recommendMusicList: [],
       recommendMv:[],
       newMusic:[],
-      newDisco:[]
+      newDisco:[],
+      albumProducts:[]
     };
   },
   created() {
@@ -172,12 +176,12 @@ export default {
     DiscoverServe.newDisco().then((res) => {
       if (res.data.code === 200) {
         this.newDisco = res.data.products;
-        console.log(res.data)
+        // console.log(res.data)
       }
     });
     DiscoverServe.digitalAlbum().then((res) => {
       if (res.data.code === 200) {
-        // this.newDisco = res.data.products;
+        this.albumProducts = res.data.albumProducts;
         // console.log(res.data)
       }
     });
@@ -564,7 +568,13 @@ export default {
       }
     }
     .tab-content{
+       ul::-webkit-scrollbar {
+          //隐藏滚动条！
+          display: none;
+        }
       ul{
+        display: -webkit-box;
+        overflow-x: scroll;
         li{
 
         }

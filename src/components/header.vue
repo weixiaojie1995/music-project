@@ -91,7 +91,7 @@
 import CommonServer from './../api/common.serve'
 export default {
   name: 'more',
-  props: { },
+  props: {},
   data(){
     return{
       showPopup:false,
@@ -133,7 +133,6 @@ export default {
         if(res.data.code===200){
           this.$router.replace('/login/index')
           window.location.reload()
-
         }
       })
     }

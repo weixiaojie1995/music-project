@@ -31,7 +31,7 @@ class DiscoverServe {
   }
   // 数字专辑
   digitalAlbum(){
-    return axios.post('/album/list/style',{limit:12,area:'Z_H',offset:1})
+    return axios.get('/album/list/style?area=E_A&limit=6')
   }
   
 
