@@ -169,7 +169,8 @@ export default {
     DiscoverServe.newMusic().then((res) => {
       if (res.data.code === 200) {
                                      this.newMusic = res.data.result;
-     
+        // console.log(res.data)
+
       }
     });
     DiscoverServe.newDisco().then((res) => {
