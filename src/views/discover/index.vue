@@ -185,8 +185,6 @@ export default {
         // console.log(res.data)
       }
     });
-
-    
   },
   filters: {
     formateNum(value) {
