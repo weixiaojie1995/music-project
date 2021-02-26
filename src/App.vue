@@ -17,7 +17,13 @@ export default {
   },
   data(){
     return{
+      url:window.location.href,
       showHead : null
+    }
+  },
+  watch:{
+    url(){
+      window.location.href.indexOf("login")<0 ? this.showHead = true : this.showHead = false
     }
   },
   created(){

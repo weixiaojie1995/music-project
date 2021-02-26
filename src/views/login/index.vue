@@ -43,7 +43,8 @@ export default {
     login(){
       CommonServer.login(this.loginData).then(res=>{
         if(res.data.code===200){
-          this.$router.push('/discover/index')
+          this.$router.replace('/discover/index')
+          window.location.reload()
         }else{
           if(res.data.message){
             Toast(res.data.message)

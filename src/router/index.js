@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+// import Tool from './../tools/tool'
 
 Vue.use(VueRouter)
 
@@ -52,10 +53,12 @@ const router = new VueRouter({
 })
 
 // 全局前置守卫
-router.beforeEach((to, from, next) => {
-  // ...
-  next()
-})
+// router.beforeEach((to, from, next) => {
+//   // 验证登录cookis
+//   if(Tool.getCookie('MUSIC_U')) next()
+//   next()
+  
+// })
 
 // 全局后置钩子
 // router.afterEach((to, from) => {

@@ -79,7 +79,7 @@
       </div>
 
       <div class="logout">
-        <van-button class="logout-button" >退出登录</van-button>
+        <van-button class="logout-button" @click="logout" >退出登录</van-button>
       </div>
     
     </van-popup>
@@ -88,6 +88,7 @@
 </template>
 
 <script>
+import CommonServer from './../api/common.serve'
 export default {
   name: 'more',
   props: { },
@@ -124,6 +125,17 @@ export default {
         {id:1,title:'分享网易云音乐',iconName:'icon-fenxiang',message:'',messageType:''},
         {id:1,title:'关于',iconName:'icon-guanyu',message:'',messageType:''},
       ]
+    }
+  },
+  methods:{
+    logout(){
+      CommonServer.logout().then(res=>{
+        if(res.data.code===200){
+          this.$router.replace('/login/index')
+          window.location.reload()
+
+        }
+      })
     }
   }
 }
