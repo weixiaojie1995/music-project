@@ -168,21 +168,26 @@ export default {
     });
     DiscoverServe.newMusic().then((res) => {
       if (res.data.code === 200) {
-                                     this.newMusic = res.data.result;
+         this.newMusic = res.data.result;
         // console.log(res.data)
-
       }
     });
     DiscoverServe.newDisco().then((res) => {
       if (res.data.code === 200) {
-        this.newDisco = res.data.products;
+                                                     this.newDisco = res.data.products;
         // console.log(res.data)
       }
     });
     DiscoverServe.digitalAlbum().then((res) => {
       if (res.data.code === 200) {
-        this.albumProducts = res.data.albumProducts;
-        // console.log(res.data)
+       
+       
+       
+       
+       
+       
+       
+       this.albumProducts = res.data.albumProducts;
       }
     });
   },
