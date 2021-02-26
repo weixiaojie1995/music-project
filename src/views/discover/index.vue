@@ -41,10 +41,7 @@
         <li v-for="item in recommendMusicList" :key="item.id">
           <div class="img-box">
             <img :src="item.picUrl + '?param=120y120'" alt="" />
-            <p class="play-count">
-              <i class="iconfont icon-bofang"></i
-              >{{ item.playCount | formateNum }}
-            </p>
+            <p class="play-count"><i class="iconfont icon-bofang"></i>{{ item.playCount | formateNum }}</p>
           </div>
           <p class="name">{{ item.name }}</p>
         </li>
@@ -63,9 +60,7 @@
         <li v-for="item in recommendMv" :key="item.id">
           <div class="img-box">
             <img :src="item.picUrl + '?param=150y180'" alt="" />
-            <p class="play-count">
-              <i class="iconfont icon-bofang"></i>{{ item.playCount }}
-            </p>
+            <p class="play-count"><i class="iconfont icon-bofang"></i>{{ item.playCount }}</p>
             <p class="paly-icon">
               <i class="iconfont icon-bofang"></i>
             </p>
@@ -81,9 +76,11 @@
     <div class="new-music">
       <div class="title">
         <div class="tab">
-          <p class="tab-item" :class="{active:active[0]}" @click="changeTab(0)">新歌</p><span>|</span>
-          <p class="tab-item" :class="{active:active[1]}" @click="changeTab(1)">新碟</p><span>|</span>
-          <p class="tab-item" :class="{active:active[2]}" @click="changeTab(2)">数字专辑</p>
+          <p class="tab-item" :class="{ active: active[0] }" @click="changeTab(0)">新歌</p>
+          <span>|</span>
+          <p class="tab-item" :class="{ active: active[1] }" @click="changeTab(1)">新碟</p>
+          <span>|</span>
+          <p class="tab-item" :class="{ active: active[2] }" @click="changeTab(2)">数字专辑</p>
         </div>
         <p class="more">更多<i class="iconfont icon-youjiantou"></i></p>
       </div>
@@ -91,20 +88,24 @@
         <ul v-show="active[0]">
           <li v-for="item in newMusic" :key="item.id">
             <img :src="item.picUrl + '?param=50y50'" alt="" />
-            <p class="name">{{ item.song.name }}</p><span>-{{item.song.artists[0].name}}</span>
+            <p class="name">{{ item.song.name }}</p>
+            <span>-{{ item.song.artists[0].name }}</span>
           </li>
         </ul>
         <ul v-show="active[1]">
           <li v-for="item in newDisco" :key="item.id">
             <img :src="item.coverUrl + '?param=50y50'" alt="" />
-            <p class="name">{{ item.albumName }}</p><span>-{{item.artistName}}</span>
+            <p class="name">{{ item.albumName }}</p>
+            <span>-{{ item.artistName }}</span>
           </li>
         </ul>
         <ul v-show="active[2]">
           <li v-for="item in albumProducts" :key="item.id">
             <img :src="item.coverUrl + '?param=50y50'" alt="" />
-            <p class="name">{{ item.albumName }}</p><span>-{{item.artistName}}</span>
-          </li>>
+            <p class="name">{{ item.albumName }}</p>
+            <span>-{{ item.artistName }}</span>
+          </li>
+          >
         </ul>
       </div>
     </div>
@@ -114,166 +115,158 @@
 </template>
 
 <script>
-import DiscoverServe from "./../../api/discover.serve";
+import DiscoverServe from './../../api/discover.serve'
 
 export default {
   data() {
     return {
-      active:[true,false,false],
+      active: [true, false, false],
       imgList: [],
       gridList: [
-        { id: 1, name: "每日推荐", iconName: "icon-rili", routerName: "" },
-        { id: 2, name: "私人FM", iconName: "icon-diantai", routerName: "" },
-        { id: 3, name: "歌单", iconName: "icon-gedan", routerName: "" },
-        { id: 4, name: "排行榜", iconName: "icon-paihangbang", routerName: "" },
+        { id: 1, name: '每日推荐', iconName: 'icon-rili', routerName: '' },
+        { id: 2, name: '私人FM', iconName: 'icon-diantai', routerName: '' },
+        { id: 3, name: '歌单', iconName: 'icon-gedan', routerName: '' },
+        { id: 4, name: '排行榜', iconName: 'icon-paihangbang', routerName: '' },
         {
           id: 5,
-          name: "直播",
-          iconName: "icon-zhibobofangshexiangjiguankanmianxing",
-          routerName: "",
+          name: '直播',
+          iconName: 'icon-zhibobofangshexiangjiguankanmianxing',
+          routerName: '',
         },
         {
           id: 6,
-          name: "数字专辑",
-          iconName: "icon-shuzizhuanjibiaoshi",
-          routerName: "",
+          name: '数字专辑',
+          iconName: 'icon-shuzizhuanjibiaoshi',
+          routerName: '',
         },
-        { id: 7, name: "歌房", iconName: "icon-Kge", routerName: "" },
-        { id: 8, name: "游戏专区", iconName: "icon-Game", routerName: "" },
+        { id: 7, name: '歌房', iconName: 'icon-Kge', routerName: '' },
+        { id: 8, name: '游戏专区', iconName: 'icon-Game', routerName: '' },
       ],
       recommendMusicList: [],
-      recommendMv:[],
-      newMusic:[],
-      newDisco:[],
-      albumProducts:[]
-    };
+      recommendMv: [],
+      newMusic: [],
+      newDisco: [],
+      albumProducts: [],
+    }
   },
   created() {
     DiscoverServe.queryBanner().then((res) => {
       if (res.data.code === 200) {
-        this.imgList = res.data.banners;
+        this.imgList = res.data.banners
       }
-    });
+    })
     DiscoverServe.recommendMusicList({ limit: 6 }).then((res) => {
       if (res.data.code === 200) {
-        this.recommendMusicList = res.data.result;
+        this.recommendMusicList = res.data.result
         // console.log(res.data)
       }
-    });
+    })
     DiscoverServe.recommenMv().then((res) => {
       if (res.data.code === 200) {
-        this.recommendMv = res.data.result;
+        this.recommendMv = res.data.result
         // console.log(res.data)
       }
-    });
+    })
     DiscoverServe.newMusic().then((res) => {
       if (res.data.code === 200) {
-         this.newMusic = res.data.result;
+        this.newMusic = res.data.result
         // console.log(res.data)
       }
-    });
+    })
     DiscoverServe.newDisco().then((res) => {
       if (res.data.code === 200) {
-                                                     this.newDisco = res.data.products;
-        // console.log(res.data)
+        this.newDisco = res.data.products
       }
-    });
+    })
     DiscoverServe.digitalAlbum().then((res) => {
       if (res.data.code === 200) {
-       
-       
-       
-       
-       
-       
-       
-       this.albumProducts = res.data.albumProducts;
+        this.albumProducts = res.data.albumProducts
       }
-    });
+    })
   },
   filters: {
     formateNum(value) {
-      const newValue = ["", "", ""];
-      let fr = 1000;
-      let num = 3;
-      let text1 = "";
-      let fm = 1;
+      const newValue = ['', '', '']
+      let fr = 1000
+      let num = 3
+      let text1 = ''
+      let fm = 1
       while (value / fr >= 1) {
-        fr *= 10;
-        num += 1;
+        fr *= 10
+        num += 1
         // console.log('数字', value / fr, 'num:', num)
       }
       if (num <= 4) {
         // 千
-        newValue[0] = parseInt(value / 1000) + "";
-        newValue[1] = "千";
+        newValue[0] = parseInt(value / 1000) + ''
+        newValue[1] = '千'
       } else if (num <= 8) {
         // 万
-        text1 = parseInt(num - 4) / 3 > 1 ? "千万" : "万";
-        fm = text1 === "万" ? 10000 : 10000000;
+        text1 = parseInt(num - 4) / 3 > 1 ? '千万' : '万'
+        fm = text1 === '万' ? 10000 : 10000000
         if (value % fm === 0) {
-          newValue[0] = parseInt(value / fm) + "";
+          newValue[0] = parseInt(value / fm) + ''
         } else {
-          newValue[0] = parseFloat(value / fm).toFixed(2) + "";
+          newValue[0] = parseFloat(value / fm).toFixed(2) + ''
         }
-        newValue[1] = text1;
+        newValue[1] = text1
       } else if (num <= 16) {
         // 亿
-        text1 = (num - 8) / 3 > 1 ? "千亿" : "亿";
-        text1 = (num - 8) / 4 > 1 ? "万亿" : text1;
-        text1 = (num - 8) / 7 > 1 ? "千万亿" : text1;
-        fm = 1;
-        if (text1 === "亿") {
-          fm = 100000000;
-        } else if (text1 === "千亿") {
-          fm = 100000000000;
-        } else if (text1 === "万亿") {
-          fm = 1000000000000;
-        } else if (text1 === "千万亿") {
-          fm = 1000000000000000;
+        text1 = (num - 8) / 3 > 1 ? '千亿' : '亿'
+        text1 = (num - 8) / 4 > 1 ? '万亿' : text1
+        text1 = (num - 8) / 7 > 1 ? '千万亿' : text1
+        fm = 1
+        if (text1 === '亿') {
+          fm = 100000000
+        } else if (text1 === '千亿') {
+          fm = 100000000000
+        } else if (text1 === '万亿') {
+          fm = 1000000000000
+        } else if (text1 === '千万亿') {
+          fm = 1000000000000000
         }
         if (value % fm === 0) {
-          newValue[0] = parseInt(value / fm) + "";
+          newValue[0] = parseInt(value / fm) + ''
         } else {
-          newValue[0] = parseFloat(value / fm).toFixed(2) + "";
+          newValue[0] = parseFloat(value / fm).toFixed(2) + ''
         }
-        newValue[1] = text1;
+        newValue[1] = text1
       }
       if (value < 1000) {
-        newValue[0] = value + "";
-        newValue[1] = "";
+        newValue[0] = value + ''
+        newValue[1] = ''
       }
-      return newValue.join("");
+      return newValue.join('')
     },
   },
   methods: {
-    changeTab(val){
-      this.active.map((item,index)=>{
-        if(val===index){
-          this.$set(this.active,index,true)
-        }else{
-          this.$set(this.active,index,false)
+    changeTab(val) {
+      this.active.map((item, index) => {
+        if (val === index) {
+          this.$set(this.active, index, true)
+        } else {
+          this.$set(this.active, index, false)
         }
       })
-    }
+    },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .index {
   min-height: 100vh;
   padding-top: 0.1rem;
-  .divider-line{
+  .divider-line {
     background: #eee;
     width: 100%;
-    height: .06rem;
+    height: 0.06rem;
   }
   .blank {
     height: 0.3rem;
   }
-  .blank06{
-    height: .6rem;
+  .blank06 {
+    height: 0.6rem;
   }
   .header {
     background: #fff;
@@ -352,7 +345,7 @@ export default {
     }
   }
   .daliy-recommend {
-    padding-bottom: .2rem;
+    padding-bottom: 0.2rem;
     .title {
       display: flex;
       justify-content: space-between;
@@ -396,9 +389,9 @@ export default {
           height: auto;
           overflow: hidden;
           position: relative;
-            border-radius: 0.06rem;
-            border: 0.01rem solid #ccc;
-            
+          border-radius: 0.06rem;
+          border: 0.01rem solid #ccc;
+
           img {
             width: 100%;
             display: block;
@@ -433,8 +426,8 @@ export default {
       }
     }
   }
-  .recommend-mv{
-    padding-bottom: .2rem;
+  .recommend-mv {
+    padding-bottom: 0.2rem;
     .title {
       display: flex;
       justify-content: space-between;
@@ -495,21 +488,20 @@ export default {
               font-size: 0.1rem;
             }
           }
-          .paly-icon{
+          .paly-icon {
             position: absolute;
-            bottom: .04rem;
-            right: .04rem;
-            width: .2rem;
-            height: .2rem;
-            line-height: .2rem;
+            bottom: 0.04rem;
+            right: 0.04rem;
+            width: 0.2rem;
+            height: 0.2rem;
+            line-height: 0.2rem;
             text-align: center;
             background: rgb(218, 214, 214);
             border-radius: 50%;
-            i{
-              font-size: .12rem;
+            i {
+              font-size: 0.12rem;
               color: red;
             }
-
           }
         }
         .name {
@@ -528,30 +520,30 @@ export default {
       }
     }
   }
-  .new-music{
-    padding-bottom: .2rem;
+  .new-music {
+    padding-bottom: 0.2rem;
     .title {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 0.1rem;
-      height: .4rem;
-      .tab{
+      height: 0.4rem;
+      .tab {
         display: flex;
         align-items: center;
-        .tab-item{
+        .tab-item {
           color: #999;
-          font-size: .16rem;
+          font-size: 0.16rem;
           font-weight: bold;
-          padding: 0 .07rem;
+          padding: 0 0.07rem;
         }
-        :first-child{
+        :first-child {
           padding-left: 0;
         }
-        span{
+        span {
           color: #aaa;
         }
-        .active{
+        .active {
           color: #000;
         }
       }
@@ -570,20 +562,18 @@ export default {
         }
       }
     }
-    .tab-content{
-       ul::-webkit-scrollbar {
-          //隐藏滚动条！
-          display: none;
-        }
-      ul{
+    .tab-content {
+      ul::-webkit-scrollbar {
+        //隐藏滚动条！
+        display: none;
+      }
+      ul {
         display: -webkit-box;
         overflow-x: scroll;
-        li{
-
+        li {
         }
       }
     }
   }
-
 }
 </style>
