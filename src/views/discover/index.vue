@@ -151,7 +151,7 @@ export default {
   created() {
     DiscoverServe.queryBanner().then((res) => {
       if (res.data.code === 200) {
-        this.imgList = res.data.banners;
+                    this.imgList = res.data.banners;
         // console.log(res.data.banners)
       }
     });
