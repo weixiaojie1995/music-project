@@ -78,7 +78,7 @@ export default {
   left: 0;
   right: 0;
   // background: red;
-  // z-index: -1;
+  z-index: 1999;
   .tab-list{
     display: flex;
     justify-content: space-around;
