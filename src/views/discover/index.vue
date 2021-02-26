@@ -156,6 +156,8 @@ export default {
       }
     })
     DiscoverServe.recommendMusicList({ limit: 6 }).then((res) => {
+      const a = 11
+      a = 2
       if (res.data.code === 200) {
         this.recommendMusicList = res.data.result
         // console.log(res.data)
