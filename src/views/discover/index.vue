@@ -151,26 +151,7 @@ export default {
   created() {
     DiscoverServe.queryBanner().then((res) => {
       if (res.data.code === 200) {
-                                        this.imgList = res.data.banners;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        this.imgList = res.data.banners;
       }
     });
     DiscoverServe.recommendMusicList({ limit: 6 }).then((res) => {
@@ -187,8 +168,8 @@ export default {
     });
     DiscoverServe.newMusic().then((res) => {
       if (res.data.code === 200) {
-        this.newMusic = res.data.result;
-        // console.log(res.data)
+                                     this.newMusic = res.data.result;
+     
       }
     });
     DiscoverServe.newDisco().then((res) => {
