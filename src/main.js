@@ -6,12 +6,13 @@ import './assets/fonts/iconfont.css'
 import './style/common.css'
 import './config/vant.config.js'
 
-import Rem from "./tools/Rem.js";
+import Rem from './tools/Rem.js'
+
 Rem.init()
 
 Vue.config.productionTip = false
 
 new Vue({
   router,
-  render: h => h(App),
+  render: (h) => h(App),
 }).$mount('#app')
