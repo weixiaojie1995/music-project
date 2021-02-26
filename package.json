@@ -25,7 +25,7 @@
     "babel-plugin-import": "^1.13.3",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.2",
-    "husky": "^5.1.1",
+    "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
     "node-sass": "^4.14.0",
     "prettier": "^2.2.1",
@@ -57,8 +57,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,css,less,ts,tsx,scss,vue}": "prettier --write"
-   
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
-
 }
