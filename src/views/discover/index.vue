@@ -15,7 +15,7 @@
     <!-- 轮播 -->
     <div class="swiper-box">
       <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-        <van-swipe-item v-for="item in imgList" :key="item.targetId">
+        <van-swipe-item v-for="item in imgList" :key="item.bannerId">
           <img :src="item.pic" alt="" />
         </van-swipe-item>
       </van-swipe>
@@ -88,24 +88,29 @@
         <ul v-show="active[0]">
           <li v-for="item in newMusic" :key="item.id">
             <img :src="item.picUrl + '?param=50y50'" alt="" />
-            <p class="name">{{ item.song.name }}</p>
-            <span>-{{ item.song.artists[0].name }}</span>
+            <div class="music-info">
+              <p class="name">{{ item.song.name }}</p>
+              <p>--{{ item.song.artists[0].name }}</p>
+            </div>
           </li>
         </ul>
         <ul v-show="active[1]">
           <li v-for="item in newDisco" :key="item.id">
             <img :src="item.coverUrl + '?param=50y50'" alt="" />
-            <p class="name">{{ item.albumName }}</p>
-            <span>-{{ item.artistName }}</span>
+            <div class="music-info">
+              <p class="name">{{ item.albumName }}</p>
+              <p>-{{ item.artistName }}</p>
+            </div>
           </li>
         </ul>
         <ul v-show="active[2]">
-          <li v-for="item in albumProducts" :key="item.id">
+          <li v-for="item in albumProducts" :key="item.albumId">
             <img :src="item.coverUrl + '?param=50y50'" alt="" />
-            <p class="name">{{ item.albumName }}</p>
-            <span>-{{ item.artistName }}</span>
+            <div class="music-info">
+              <p class="name">{{ item.albumName }}</p>
+              <p>-{{ item.artistName }}</p>
+            </div>
           </li>
-          >
         </ul>
       </div>
     </div>
@@ -156,8 +161,6 @@ export default {
       }
     })
     DiscoverServe.recommendMusicList({ limit: 6 }).then((res) => {
-      const a = 11
-      a = 2
       if (res.data.code === 200) {
         this.recommendMusicList = res.data.result
         // console.log(res.data)
@@ -570,9 +573,36 @@ export default {
         display: none;
       }
       ul {
-        display: -webkit-box;
-        overflow-x: scroll;
+        // display: -webkit-box;
+        // overflow-x: scroll;
+        padding: 0 0.1rem;
         li {
+          display: flex;
+          // align-items: center;
+          margin-top: 0.06rem;
+          img {
+            width: 0.5rem;
+            height: 0.5rem;
+          }
+          .music-info {
+            overflow: hidden;
+            width: 88%;
+            height: 0.5rem;
+            margin-left: 0.1rem;
+            padding-top: 0.06rem;
+            border-bottom: 0.01rem solid #eee;
+            p.name {
+              width: 90%;
+              font-size: 0.14rem;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+            p:last-child {
+              font-size: 0.12rem;
+              color: #999;
+            }
+          }
         }
       }
     }

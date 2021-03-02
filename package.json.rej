@@ -1,9 +1,0 @@
-diff a/package.json b/package.json	(rejected hunks)
-@@ -57,7 +57,6 @@
-     }
-   },
-   "lint-staged": {
--    "*.js": "eslint --cache --fix",
-     "*.{js,css,md}": "prettier --write"
-   }
- }
